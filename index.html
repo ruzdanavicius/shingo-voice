@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Shingo Voice — What does this principle mean to you?</title>
+<meta name="description" content="Share what a Shingo Guiding Principle means to you and get a fun assessors' panel verdict." />
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+<div class="wrap">
+  <header class="site-header">
+    <span class="eyebrow">Shingo Guiding Principles</span>
+    <h1>What does this mean to you?</h1>
+    <p>One principle, your own words, thirty seconds.</p>
+  </header>
+
+  <main id="app">
+
+    <!-- Loading state -->
+    <section id="loading-view" class="card">
+      <p class="intro-line">Loading a principle for you&hellip;</p>
+    </section>
+
+    <!-- Survey form (populated by app.js) -->
+    <section id="survey-view" class="card hidden">
+      <p class="intro-line">Here's a Shingo Guiding Principle. In your own words, what does it mean to you?</p>
+      <h2 id="principle-title" class="principle-title"></h2>
+      <p id="principle-summary" class="principle-summary"></p>
+
+      <form id="response-form" novalidate>
+        <label for="response-text" style="font-weight:600; font-size:0.9rem;">Your take</label>
+        <textarea
+          id="response-text"
+          name="response-text"
+          minlength="10"
+          maxlength="4000"
+          required
+          placeholder="Type at least 10 characters&hellip; what does this principle mean in your day-to-day work?"
+        ></textarea>
+        <div class="field-meta">
+          <span id="char-count">0 / 4000</span>
+          <span id="min-hint">min 10 characters</span>
+        </div>
+
+        <div id="submit-error" class="error-box hidden" role="alert"></div>
+
+        <div class="btn-row">
+          <button type="submit" id="submit-btn" class="btn btn-primary">Submit for judging</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Results / certificate view (populated by app.js) -->
+    <section id="results-view" class="card certificate hidden">
+      <div class="confetti" id="confetti-container" aria-hidden="true"></div>
+      <div class="medal">🏆</div>
+      <h2>Certificate of Insight</h2>
+      <p class="overall-score" id="overall-score-display"></p>
+      <div class="panel-list" id="panel-list"></div>
+      <a class="btn btn-primary close-link" href="https://www.google.com" target="_self">Close</a>
+    </section>
+
+    <!-- Fatal / no-data error -->
+    <section id="fatal-error-view" class="card hidden">
+      <p class="error-box">Something went wrong loading the survey. Please refresh the page to try again.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Anonymous &middot; no names, emails, or personal data collected.</p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="assets/config.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

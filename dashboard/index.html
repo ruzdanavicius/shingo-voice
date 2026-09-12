@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Shingo Voice — Manager Dashboard</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+<div class="wrap">
+
+  <!-- Passphrase gate -->
+  <section id="gate-view">
+    <div class="card gate-card">
+      <h1>Manager Dashboard</h1>
+      <p>Enter passphrase to continue.</p>
+      <form id="gate-form">
+        <input
+          type="password"
+          id="gate-input"
+          name="passphrase"
+          autocomplete="off"
+          placeholder="Passphrase"
+          required
+        />
+        <button type="submit" class="btn btn-primary">Unlock</button>
+      </form>
+      <div id="gate-error" class="error-box hidden">Incorrect passphrase. Try again.</div>
+    </div>
+  </section>
+
+  <!-- Dashboard content (revealed after unlock) -->
+  <section id="dashboard-view" class="hidden">
+    <div class="dash-header">
+      <h1>Shingo Voice — Manager Dashboard</h1>
+      <span class="last-updated" id="last-updated">Loading&hellip;</span>
+    </div>
+
+    <div class="stat-grid" id="stat-grid">
+      <div class="stat-tile">
+        <div class="label">Total visits</div>
+        <div class="value" id="stat-visits">&ndash;</div>
+      </div>
+      <div class="stat-tile">
+        <div class="label">Total submissions</div>
+        <div class="value" id="stat-submissions">&ndash;</div>
+      </div>
+      <div class="stat-tile">
+        <div class="label">Conversion rate</div>
+        <div class="value" id="stat-conversion">&ndash;</div>
+      </div>
+      <div class="stat-tile">
+        <div class="label">Average panel score</div>
+        <div class="value" id="stat-avg-score">&ndash;</div>
+      </div>
+    </div>
+
+    <div class="chart-grid">
+      <div class="card chart-card">
+        <h2>Visits vs. submissions &mdash; last 30 days</h2>
+        <canvas id="trend-chart" height="240"></canvas>
+      </div>
+      <div class="card chart-card">
+        <h2>Submissions per principle</h2>
+        <canvas id="principle-chart" height="240"></canvas>
+      </div>
+      <div class="card chart-card">
+        <h2>Panel score distribution</h2>
+        <canvas id="score-chart" height="240"></canvas>
+      </div>
+      <div class="card chart-card">
+        <h2>Recent submissions</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Principle</th>
+                <th>Score</th>
+                <th>Excerpt</th>
+              </tr>
+            </thead>
+            <tbody id="recent-table-body"></tbody>
+          </table>
+        </div>
+        <p class="table-caption">
+          Excerpts are truncated to 150 characters by the database and are never the full
+          response. Full submissions can be reviewed directly in the Supabase Table Editor
+          by someone with project access.
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>
