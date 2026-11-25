@@ -2,8 +2,8 @@
   "use strict";
 
   // ---------- Config (duplicated intentionally, see README.md) ----------
-  var SUPABASE_URL = "https://vnoqyjraukytmizjrzmn.supabase.co";
-  var SUPABASE_ANON_KEY = "sb_publishable_NC2HJulrYI1FFL4jjjBEDA_vHIQXujT";
+  var SUPABASE_URL = "https://kzljxviruxcyomlsulcs.supabase.co";
+  var SUPABASE_ANON_KEY = "sb_publishable_dmYvYMqmEqQzkfbjcBlllQ_1pt1rwQ9";
   var client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
   // ---------- Passphrase gate ----------
